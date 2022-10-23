@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Hello {{ name }}</h1>
-    <h1> here is our custom HTML template  </h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Hello {{ request.user.username }}</h1>
+    {{ request.user.first_name }} {{ request.user.last_name }}
+    <hr>
+    <p>
+        <a href="{% url 'lead-create' %}">Create</a>
+    </p>
+    <hr>
     {% for lead in leads %}
-        <p>{{ lead.first_name }} | {{ lead.age }} | {{ lead.last_name }}</p>
+        <div class="lead">
+            <a href="{% url 'lead-detail' lead.pk %}">{{ lead.first_name }} | {{ lead.last_name }} | {{ lead.age }}</a>
+        </div>
     {% endfor %}
-</body>
-</html>
+    <hr>
+{% endblock content %}

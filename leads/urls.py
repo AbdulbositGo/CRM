@@ -3,7 +3,9 @@ from .views import *
 
 
 urlpatterns = [
-    path("list/", lead_list, name='lead_list'),
-    path("<pk>/detail/", lead_detail, name='lead_list'),
-    path("create/", lead_create, name='lead_list'),
+    path("list/", lead_list, name='lead-list'),
+    path("create/", lead_create, name='lead-create'),
+    path("<pk>/detail/", lead_detail, name='lead-detail'),
+    path("<pk>/update/", lead_update, name='lead-update'),
+    path("<pk>/delete/", lead_delete, name='lead-delete'),
 ]

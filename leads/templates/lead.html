@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends content %}
 
-</body>
-</html>
+{% block content %}
+    <hr />
+    <h1>{{ lead.first_name }}</h1>
+    <h1>{{ lead.last_name }}</h1>
+    <h1>{{ lead.age }}</h1>
+    <h1>{{ lead.agent }}</h1>
+    <hr />
+    <a href="{% url 'lead-update' lead.pk %}">Update</a> | <a href="{% url 'lead-delete' lead.pk %}">Delete</a>
+{% endblock content %}
