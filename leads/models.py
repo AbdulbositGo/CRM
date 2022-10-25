@@ -1,6 +1,6 @@
 from django.db import models
+from django.shortcuts import reverse
 from django.contrib.auth import get_user_model
-
 
 # Create your models here.
 
@@ -15,6 +15,9 @@ class Lead(models.Model):
 
     def __str__(self):
         return self.first_name
+
+    def get_absolute_url(self):
+        return reverse('lead-detail', kwargs={'pk': self.pk})
 
 
 class Agent(models.Model):
