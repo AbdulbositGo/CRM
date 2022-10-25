@@ -51,6 +51,16 @@ class LeadCreateView(CreateView):
     def get_success_url(self):
         return reverse("lead-list")
 
+    def form_valid(self, form):
+        # TUDO send email
+        send_mail(
+            subject="A lead has been created",
+            message="Go to this site to see new load",
+            from_email="test@test.com",
+            recipient_list=['abdulbositforgm@gmail.com']
+        )
+        return super(LeadCreateView, self).form_valid(form)
+
 
 def lead_create(request):
     if request.method == "POST":
