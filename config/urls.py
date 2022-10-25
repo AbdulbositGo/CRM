@@ -9,10 +9,13 @@ from leads.views import HomeView, SignUpView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='home'),
+    path('lead/', include("leads.urls")),
+    path('agent/', include("agents.urls")),
+
+    # registrations
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', SignUpView.as_view(), name='signup'),
-    path('lead/', include("leads.urls")),
 ]
 
 if settings.DEBUG:
